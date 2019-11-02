@@ -1,9 +1,9 @@
 {
-  "name": "react-simplemde",
+  "name": "react-markdown-editor-smde",
   "version": "1.0.0",
-  "main": "dist/react-simplemde.cjs.js",
-  "module": "dist/react-simplemde.esm.js",
-  "browser": "dist/react-simplemde.umd.js",
+  "main": "dist/react-markdown-editor-smde.cjs.js",
+  "module": "dist/react-markdown-editor-smde.esm.js",
+  "browser": "dist/react-markdown-editor-smde.umd.js",
   "dependencies": {
     "simplemde": "^1.11.2",
     "dompurify": "^2.0.7",
