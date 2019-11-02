@@ -1,6 +1,6 @@
 {
   "name": "react-markdown-editor-smde",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/react-markdown-editor-smde.cjs.js",
   "module": "dist/react-markdown-editor-smde.esm.js",
   "browser": "dist/react-markdown-editor-smde.umd.js",

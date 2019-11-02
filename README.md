@@ -56,6 +56,9 @@ const Editor = () => {
 | `previewDOMPurify` | Output HTML DOMPurify，default ON,  prevent xss issues |  NO    |
 | `imageUploadFun` | image upload async function, default use Browser FileReader |  NO    |
 
+
+Most Markdown Editor (include SimpleMDE) also support html, this will cause [XSS issues](https://github.com/sparksuite/simplemde-markdown-editor/issues/721). So highly recommended you **DO NOT turn `outputDOMPurify` and `previewDOMPurify` off**.
+
 ### How to Custom Toolbar(`toolbar` props)
 
 `MarkdownEditor` still use SimpleMd's mothods to Custom toobar, but more Lazy, only `toolbar` props ...
@@ -70,7 +73,6 @@ export interface MarkdownEditorToolBarItem {
   title?: string;
 }
 ```
-
 
 - string[]: use SimpleMd's buidin Names
     - `bold`
