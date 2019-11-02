@@ -1,9 +1,16 @@
 {
   "name": "react-markdown-editor-smde",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/react-markdown-editor-smde.cjs.js",
   "module": "dist/react-markdown-editor-smde.esm.js",
   "browser": "dist/react-markdown-editor-smde.umd.js",
+  "author": "hicc <iwcc@outlook.com>",
+  "keywords": ["react", "Markdown", "Markdown Editor", "react markown editor", "markdown dom Purify","markdown XSS"],
+  "homepage": "https://github.com/yijian166/React-SimpleMDE",
+  "bugs": {
+    "url": "https://github.com/yijian166/React-SimpleMDE/issues",
+    "email": "iwcc@outlook.com"
+  },
   "dependencies": {
     "simplemde": "^1.11.2",
     "dompurify": "^2.0.7",
@@ -22,6 +29,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-typescript2": "^0.24.3",
     "ts-node": "^7.0.1",
     "tslib": "^1.10.0",
     "typescript": "^3.6.4"
@@ -38,5 +46,7 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "types": "dist/index.d.ts",
+  "license": "MIT"
 }

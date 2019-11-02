@@ -1,9 +1,9 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import typescript from 'rollup-plugin-typescript';
 import pkg from './package.json';
 import postcss from 'rollup-plugin-postcss';
 import cleaner from 'rollup-plugin-cleaner';
+import typescript from 'rollup-plugin-typescript2'
 export default [
 	// browser-friendly UMD build
 	{
@@ -25,7 +25,10 @@ export default [
 			}),
 			resolve(),   // so Rollup can find `ms`
 			commonjs(),  // so Rollup can convert `ms` to an ES module
-			typescript(), // so Rollup can convert TypeScript to JavaScript
+			typescript({
+				typescript: require('typescript'),
+				objectHashIgnoreUnknownHack: true
+    		}), // so Rollup can convert TypeScript to JavaScript
 			cleaner({
 				targets: [
 					'./dist/'
@@ -47,9 +50,12 @@ export default [
 			postcss({
 				extension: ['.css']
 			}),
-			resolve(),   // so Rollup can find `ms`
+			resolve(),  
 			commonjs(),  
-			typescript(),
+			typescript({
+				typescript: require('typescript'),
+				objectHashIgnoreUnknownHack: true
+    		}),
 		],
 		output: [
 			{ file: pkg.main, format: 'cjs',exports: 'named' },

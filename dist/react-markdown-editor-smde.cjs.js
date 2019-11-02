@@ -18075,7 +18075,7 @@ var fullToolBar = {
             el.addEventListener('change', onChange);
             el.click();
             function onChange(e) {
-                return __awaiter(this, void 0, Promise, function () {
+                return __awaiter(this, void 0, void 0, function () {
                     var target, files, file, url, cm, stat, error_1;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
@@ -18177,7 +18177,7 @@ Object.entries(fullToolBar).forEach(function (_a) {
     fullToolBarKey.set(key, value);
 });
 var separator = '|';
-var defaultUploadFun = function (file) { return __awaiter(void 0, void 0, Promise, function () {
+var defaultUploadFun = function (file) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, new Promise(function (resolve, reject) {
                 var reader = new FileReader();
@@ -18235,16 +18235,16 @@ var MarkdownEditor = /** @class */ (function (_super) {
                     }
                 }
                 else if (typeof item === 'object') {
-                    var name = item.name, action = item.action, className = item.className;
-                    var _item = fullToolBarKey.get(name);
+                    var name_1 = item.name, action = item.action, className = item.className;
+                    var _item = fullToolBarKey.get(name_1);
                     var _className = _item ? _item.className : '';
-                    if (!name || typeof name !== 'string') {
+                    if (!name_1 || typeof name_1 !== 'string') {
                         console.warn("toolbar config error\uFF0C" + item + " name not  string");
                         return null;
                     }
                     if (_item) {
                         // tool Name rewrite
-                        if (name === 'guide') {
+                        if (name_1 === 'guide') {
                             if (!action || typeof action !== 'string') {
                                 item.action = _item.action;
                             }
