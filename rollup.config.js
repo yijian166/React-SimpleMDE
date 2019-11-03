@@ -8,22 +8,28 @@ export default [
 	// browser-friendly UMD build
 	{
 		input: 'src/index.ts',
-		output: {
-			name: 'React-SimpleMDE',
-			file: pkg.browser,
-			format: 'umd',
-			exports: 'named',
-			globals: {
-				'react': 'React',
-				'react-dom': 'ReactDom',
+		output: [
+			{
+				name: 'react-markdown-editor-smde',
+				file: pkg.main,
+				format: 'umd',
+				exports: 'named',
+				globals: {
+					'react': 'React',
+					'react-dom': 'ReactDom',
+				},
 			},
-		},
+			{ file: pkg.module, format: 'es', exports: 'named' }
+		],
 		external: ['react', 'react-dom'],
 		plugins: [
 			postcss({
 				extension: ['.css']
 			}),
-			resolve(),   // so Rollup can find `ms`
+			resolve({
+				// preferBuiltins: false
+				browser: true,
+			}), 
 			commonjs(),  // so Rollup can convert `ms` to an ES module
 			typescript({
 				typescript: require('typescript'),
@@ -34,32 +40,6 @@ export default [
 					'./dist/'
 				]
 			})
-		]
-	},
-
-	// CommonJS (for Node) and ES module (for bundlers) build.
-	// (We could have three entries in the configuration array
-	// instead of two, but it's quicker to generate multiple
-	// builds from a single configuration where possible, using
-	// an array for the `output` option, where we can specify 
-	// `file` and `format` for each target)
-	{
-		input: 'src/index.ts',
-		external: ['react', 'react-dom'],
-		plugins: [
-			postcss({
-				extension: ['.css']
-			}),
-			resolve(),  
-			commonjs(),  
-			typescript({
-				typescript: require('typescript'),
-				objectHashIgnoreUnknownHack: true
-    		}),
-		],
-		output: [
-			{ file: pkg.main, format: 'cjs',exports: 'named' },
-			{ file: pkg.module, format: 'es', exports: 'named' }
 		]
 	}
 ];

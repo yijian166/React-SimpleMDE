@@ -1,15 +1,24 @@
 {
   "name": "react-markdown-editor-smde",
-  "version": "1.0.2",
-  "main": "dist/react-markdown-editor-smde.cjs.js",
+  "version": "1.0.3",
+  "main": "dist/react-markdown-editor-smde.js",
   "module": "dist/react-markdown-editor-smde.esm.js",
-  "browser": "dist/react-markdown-editor-smde.umd.js",
   "author": "hicc <iwcc@outlook.com>",
-  "keywords": ["react", "Markdown", "Markdown Editor", "react markown editor", "markdown dom Purify","markdown XSS"],
+  "keywords": [
+    "react",
+    "Markdown",
+    "Markdown Editor",
+    "react markown editor",
+    "markdown dom Purify",
+    "markdown XSS"
+  ],
   "homepage": "https://github.com/yijian166/React-SimpleMDE",
   "bugs": {
     "url": "https://github.com/yijian166/React-SimpleMDE/issues",
     "email": "iwcc@outlook.com"
+  },
+  "browser": {
+    "fs": false
   },
   "dependencies": {
     "simplemde": "^1.11.2",
