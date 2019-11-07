@@ -104,7 +104,7 @@ export interface MarkdownEditorToolBarItem {
     - `redo`
     - `guide`;
     - `|`
-    - And plus one `choose-image`
+    - And plus one `choose-image` (choose local image, and combine with `imageUploadFun` to upload image to your server)
 - MarkdownEditorToolBarItem[]: SimpleMd's buidin toolbar functions 
     - `toggleBold`
     - `toggleItalic`
