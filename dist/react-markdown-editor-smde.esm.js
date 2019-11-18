@@ -18284,7 +18284,7 @@ var MarkdownEditor = /** @class */ (function (_super) {
                 }
                 return null;
             }).filter(function (item) { return item; });
-            return __assign(__assign(__assign({}, (typeof this.props.initialValue === 'string' ? { initialValue: this.props.initialValue } : {})), (typeof this.props.editorConfig === 'object' ? this.props.editorConfig : {})), { toolbar: toolBar.length > 0 ? toolBar : false });
+            return __assign(__assign(__assign({}, (typeof this.props.initialValue === 'string' ? { initialValue: this.props.initialValue } : {})), (typeof this.props.editorConfig === 'object' ? this.props.editorConfig : {})), { toolbar: toolBar.length > 0 ? toolBar : false, autoDownloadFontAwesome: false });
         },
         enumerable: true,
         configurable: true

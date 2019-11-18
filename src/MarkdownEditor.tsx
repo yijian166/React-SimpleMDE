@@ -347,6 +347,7 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
       ...(typeof this.props.initialValue === 'string' ? { initialValue: this.props.initialValue } : {}),
       ...(typeof this.props.editorConfig === 'object' ? this.props.editorConfig : {}),
       toolbar: toolBar.length > 0 ? toolBar : false,
+      autoDownloadFontAwesome: false
     };
   }
   private get _hideToolbar() {
