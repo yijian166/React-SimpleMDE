@@ -149,6 +149,7 @@ const fullToolBar: {
       el.addEventListener('change', onChange);
       el.click();
       async function onChange(e: Event): Promise<any> {
+        el.removeEventListener('change', onChange)
         try {
           const target = (e as any).target;
           const files = target.files;
@@ -160,6 +161,7 @@ const fullToolBar: {
             editor._replaceSelection(cm, stat.image, ['![](', '#url#)'], url);
           }
         } catch (error) {
+          console.log('---', error);
         }
       }
     },

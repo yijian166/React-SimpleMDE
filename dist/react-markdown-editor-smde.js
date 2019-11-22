@@ -18101,23 +18101,27 @@
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    _a.trys.push([0, 3, , 4]);
+                                    el.removeEventListener('change', onChange);
+                                    _a.label = 1;
+                                case 1:
+                                    _a.trys.push([1, 4, , 5]);
                                     target = e.target;
                                     files = target.files;
-                                    if (!(files && files.length > 0)) return [3 /*break*/, 2];
+                                    if (!(files && files.length > 0)) return [3 /*break*/, 3];
                                     file = files[0];
                                     return [4 /*yield*/, editor._fileUploadFun(file)];
-                                case 1:
+                                case 2:
                                     url = _a.sent();
                                     cm = editor.codemirror;
                                     stat = editor.getState();
                                     editor._replaceSelection(cm, stat.image, ['![](', '#url#)'], url);
-                                    _a.label = 2;
-                                case 2: return [3 /*break*/, 4];
-                                case 3:
+                                    _a.label = 3;
+                                case 3: return [3 /*break*/, 5];
+                                case 4:
                                     error_1 = _a.sent();
-                                    return [3 /*break*/, 4];
-                                case 4: return [2 /*return*/];
+                                    console.log('---', error_1);
+                                    return [3 /*break*/, 5];
+                                case 5: return [2 /*return*/];
                             }
                         });
                     });
