@@ -3,6 +3,10 @@ import { EditorFromTextArea } from 'codemirror';
 export interface MarkdownEditorFieldProps extends MarkdownEditorProps {
   value?: string;
   onChange?: (value: string, html: string) => void;
+  /**
+   * codemirror on upate event
+   */
+  onUpdate?: (editor: SimpleMarkdownEditor, e: any) => void;
 }
 export interface MarkdownEditorProps {
   /**

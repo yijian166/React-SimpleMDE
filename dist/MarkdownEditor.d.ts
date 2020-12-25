@@ -1,5 +1,3 @@
-import 'simplemde/src/css/simplemde.css';
-import 'codemirror/lib/codemirror.css';
 import './style.css';
 import * as Types from './types';
 import { Component } from 'react';

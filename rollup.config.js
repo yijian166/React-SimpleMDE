@@ -21,7 +21,7 @@ export default [
 			},
 			{ file: pkg.module, format: 'es', exports: 'named' }
 		],
-		external: ['react', 'react-dom'],
+		external: ['react', 'react-dom', 'simplemde'],
 		plugins: [
 			postcss({
 				extension: ['.css']

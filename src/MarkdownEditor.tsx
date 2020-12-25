@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion */
 /* eslint-disable @typescript-eslint/member-ordering */
-import SimpleMDE from 'simplemde';
-import 'simplemde/src/css/simplemde.css';
-import 'codemirror/lib/codemirror.css';
+;
+
 import './style.css';
 import * as Types from './types';
 import { mdToHTML, htmlDomSanitize } from './util';
 import React, { Component, createRef } from 'react';
+import SimpleMDE from 'simplemde'
 
 const ToolBarFuncs = ['toggleBold',
   'toggleItalic',
@@ -306,7 +306,8 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
           return item;
         } else {
           if (fullToolBarKey.get(item)) {
-            return fullToolBarKey.get(item) as Types.MarkdownEditorToolBarItem;
+            const config = fullToolBarKey.get(item) as Types.MarkdownEditorToolBarItem;
+            return config
           } else {
             return null;
           }
@@ -515,6 +516,31 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
     this._setHeightToEl(this._editorH, '.CodeMirror');
     this._setHeightToEl(this._editorMinH, '.CodeMirror', true);
     this._setHeightToEl(this._editorMinH, '.CodeMirror-scroll', true);
+    
+    (this.$editor.codemirror as any).on("paste", async (cm: any,e:any) => {
+      // console.log(e.clipboardData)
+        if(!(e.clipboardData&&e.clipboardData.items)){
+            alert("该浏览器不支持操作");
+            return;
+        }
+        for (var i = 0, len = e.clipboardData.items.length; i < len; i++) {
+          var item = e.clipboardData.items[i];
+        // console.log(item.kind+":"+item.type);
+          if (item.kind === "string") {
+              item.getAsString(function (str: any) {
+                  // str 是获取到的字符串
+              })
+          } else if (item.kind === "file") {
+            var pasteFile = item.getAsFile();
+            // pasteFile就是获取到的文件
+            console.log(pasteFile);
+            // fileUpload(pasteFile);
+            const url = await (this.$editor as any)._fileUploadFun(pasteFile);
+            const stat = this.$editor.getState();
+            this.$editor._replaceSelection(cm, stat.image, ['![](', '#url#)'], url);
+          }
+      }
+    });
   }
 
   render() {

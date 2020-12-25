@@ -7,15 +7,20 @@ Simple Markdown Editor For React, base on [SimpleMDE](https://github.com/sparksu
 - Support Local Image
 - Support **DOMPurify**, prevent XSS Issue.
 - Support Typescript, include some SimpleMDE's types.
+- Support paste image to upload
 - And full [SimpleMDE](https://github.com/sparksuite/simplemde-markdown-editor)'s Feature
 
 ## How To Use MarkdownEditor
 
 ```
+npm install simplemde --save
 npm install react-markdown-editor-smde --save
+
 ```
 
 ```javascript
+import 'simplemde/src/css/simplemde.css';
+import 'codemirror/lib/codemirror.css'
 import MarkdownEditor from 'react-markdown-editor-smde'
 const Editor = () => {
   const el = useRef();
