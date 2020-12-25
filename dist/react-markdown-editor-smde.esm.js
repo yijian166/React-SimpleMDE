@@ -3566,8 +3566,6 @@ var MarkdownEditor = /** @class */ (function (_super) {
                     case 2:
                         if (!(item.kind === "file")) return [3 /*break*/, 4];
                         pasteFile = item.getAsFile();
-                        // pasteFile就是获取到的文件
-                        console.log(pasteFile);
                         return [4 /*yield*/, this.$editor._fileUploadFun(pasteFile)];
                     case 3:
                         url = _a.sent();

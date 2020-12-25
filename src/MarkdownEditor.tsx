@@ -533,7 +533,7 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
           } else if (item.kind === "file") {
             var pasteFile = item.getAsFile();
             // pasteFile就是获取到的文件
-            console.log(pasteFile);
+            // console.log(pasteFile);
             // fileUpload(pasteFile);
             const url = await (this.$editor as any)._fileUploadFun(pasteFile);
             const stat = this.$editor.getState();
