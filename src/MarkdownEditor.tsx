@@ -516,6 +516,14 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
     this._setHeightToEl(this._editorH, '.CodeMirror');
     this._setHeightToEl(this._editorMinH, '.CodeMirror', true);
     this._setHeightToEl(this._editorMinH, '.CodeMirror-scroll', true);
+
+    if (this.props.moreExtraKeys && typeof this.props.moreExtraKeys === 'object') {
+      for (const key of Object.keys(this.props.moreExtraKeys)) {
+        if (typeof this.props.moreExtraKeys[key] === 'function') {
+          this.$editor.codemirror.addKeyMap({[key]: this.props.moreExtraKeys[key]})
+        }
+      }
+    }
     
     (this.$editor.codemirror as any).on("paste", async (cm: any,e:any) => {
       // console.log(e.clipboardData)

@@ -5,7 +5,7 @@ export interface MarkdownEditorFieldProps extends MarkdownEditorProps {
     /**
      * codemirror on upate event
      */
-    onUpdate?: (editor: SimpleMarkdownEditor, e: any) => void;
+    onUpdate?: (editor: SimpleMarkdownEditor, e: EditorFromTextArea) => void;
 }
 export interface MarkdownEditorProps {
     /**
@@ -42,6 +42,12 @@ export interface MarkdownEditorProps {
      * image upload async function, default use Browser FileReader
      */
     imageUploadFun?: (file: File) => Promise<string>;
+    /**
+     * add extra key map to codemirror
+     */
+    moreExtraKeys?: {
+        [key: string]: (cm: EditorFromTextArea) => void;
+    };
 }
 export declare type MarkdownEditorToolbar = boolean | MarkdownEditorToolBarConfig;
 export declare type MarkdownEditorToolBarConfig = (MarkdownEditorToolBarName | '|' | MarkdownEditorToolBarItem)[];

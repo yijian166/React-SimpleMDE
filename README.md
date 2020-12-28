@@ -8,6 +8,7 @@ Simple Markdown Editor For React, base on [SimpleMDE](https://github.com/sparksu
 - Support **DOMPurify**, prevent XSS Issue.
 - Support Typescript, include some SimpleMDE's types.
 - Support paste image to upload
+- Support add more codemirror key map
 - And full [SimpleMDE](https://github.com/sparksuite/simplemde-markdown-editor)'s Feature
 
 ## How To Use MarkdownEditor
@@ -42,6 +43,7 @@ const Editor = () => {
     </div>
   )
 }
+
 ```
 - use `ref` to get Editor instance
     - `const md = ref.mdValue` get markdown value
@@ -51,6 +53,9 @@ const Editor = () => {
 - And `MarkdownEditor` has static vars
     - `MarkdownEditor.ToolBarFuncs`: default ToolBar Functions
     - `MarkdownEditor.defaultToolBar`: default ToolBar item
+
+
+
 
 ### `MarkdownEditor` props
 
@@ -64,6 +69,7 @@ const Editor = () => {
 | `outputDOMPurify` | Output HTML DOMPurify，default ON,  prevent xss issues |  NO    |
 | `previewDOMPurify` | Output HTML DOMPurify，default ON,  prevent xss issues |  NO    |
 | `imageUploadFun` | image upload async function, default use Browser FileReader |  NO    |
+| `moreExtraKeys` | add more key map to codemirror |  NO    |
 
 
 Most Markdown Editor (include SimpleMDE) also support html, this will cause [XSS issues](https://github.com/sparksuite/simplemde-markdown-editor/issues/721). So highly recommended you **DO NOT turn `outputDOMPurify` and `previewDOMPurify` off**.
@@ -133,6 +139,20 @@ export interface MarkdownEditorToolBarItem {
     - `togglePreview`
     - `toggleSideBySide`
     - `toggleFullScreen`
+
+## more key map
+```javascript
+<MarkdownEditorField
+  moreExtraKeys={{
+    'Ctrl-S': function(cm) {
+      onSubmit();
+    },
+    'Cmd-S': function(cm) {
+      onSubmit();
+    }
+  }}
+/>
+```
 
 ## Others
 

@@ -2991,7 +2991,7 @@
     return purify;
 
     })));
-
+    //# sourceMappingURL=purify.js.map
     });
 
     var mdToHTML = function (md, markedOptions) {
@@ -3499,6 +3499,7 @@
             configurable: true
         });
         MarkdownEditor.prototype.componentDidMount = function () {
+            var _a;
             var _this = this;
             if (!this._editorEl.current) {
                 return;
@@ -3549,6 +3550,14 @@
             this._setHeightToEl(this._editorH, '.CodeMirror');
             this._setHeightToEl(this._editorMinH, '.CodeMirror', true);
             this._setHeightToEl(this._editorMinH, '.CodeMirror-scroll', true);
+            if (this.props.moreExtraKeys && typeof this.props.moreExtraKeys === 'object') {
+                for (var _i = 0, _b = Object.keys(this.props.moreExtraKeys); _i < _b.length; _i++) {
+                    var key = _b[_i];
+                    if (typeof this.props.moreExtraKeys[key] === 'function') {
+                        this.$editor.codemirror.addKeyMap((_a = {}, _a[key] = this.props.moreExtraKeys[key], _a));
+                    }
+                }
+            }
             this.$editor.codemirror.on("paste", function (cm, e) { return __awaiter(_this, void 0, void 0, function () {
                 var i, len, item, pasteFile, url, stat;
                 return __generator(this, function (_a) {
