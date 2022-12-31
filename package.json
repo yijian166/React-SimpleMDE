@@ -37,7 +37,7 @@
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.24.3",
     "simplemde": "^1.11.2",
     "ts-node": "^7.0.1",
