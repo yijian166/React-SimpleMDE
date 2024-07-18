@@ -21,7 +21,7 @@ export default [
 			},
 			{ file: pkg.module, format: 'es', exports: 'named' }
 		],
-		external: ['react', 'react-dom', 'simplemde'],
+		external: ['react', 'react-dom', 'easymde'],
 		plugins: [
 			postcss({
 				extension: ['.css']
@@ -30,7 +30,13 @@ export default [
 				// preferBuiltins: false
 				browser: true,
 			}), 
-			commonjs(),  // so Rollup can convert `ms` to an ES module
+			commonjs({
+				include: /node_modules/,
+				namedExports: {
+					marked:['marked'],
+					'marked-highlight/lib/index.umd.js':['markedHighlight']
+				}
+			}),  // so Rollup can convert `ms` to an ES module
 			typescript({
 				typescript: require('typescript'),
 				objectHashIgnoreUnknownHack: true

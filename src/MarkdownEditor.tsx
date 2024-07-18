@@ -6,7 +6,8 @@ import './style.css';
 import * as Types from './types';
 import { mdToHTML, htmlDomSanitize } from './util';
 import React, { Component, createRef } from 'react';
-import SimpleMDE from 'simplemde'
+import EasyMDE from 'easymde'
+import { markedHighlight } from "marked-highlight";
 
 const ToolBarFuncs = ['toggleBold',
   'toggleItalic',
@@ -30,7 +31,7 @@ const ToolBarFuncs = ['toggleBold',
   'togglePreview',
   'toggleSideBySide',
   'toggleFullScreen'].reduce((pre, cur) => {
-  pre[cur as Types.MarkdownEditorToolbarFuncName] = SimpleMDE[cur];// as ((editor: Types.SimpleMarkdownEditor) => void);
+  pre[cur as Types.MarkdownEditorToolbarFuncName] = EasyMDE[cur];// as ((editor: Types.SimpleMarkdownEditor) => void);
   return pre;
 }, {} as Types.ToolBarFuncs);
 
@@ -419,16 +420,24 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
       breaks: true,
     };
     // Update options
+    let others = []
     if (editorConfig && editorConfig.renderingConfig && editorConfig.renderingConfig.singleLineBreaks === false) {
       markedOptions.breaks = false;
     } else {
       markedOptions.breaks = true;
       if (editorConfig && editorConfig.renderingConfig && editorConfig.renderingConfig.codeSyntaxHighlighting === true && (window as any).hljs) {
-        markedOptions.highlight = function(code: any) {
-          return (window as any).hljs.highlightAuto(code).value;
-        };
+        // markedOptions.highlight = function(code: any) {
+        //   return (window as any).hljs.highlightAuto(code).value;
+        // };
+        others.push(markedHighlight({
+          langPrefix: 'hljs language-',
+          highlight(code:string, lang:string, info:unknown) {
+            const language = (window as any).hljs.getLanguage(lang) ? lang : 'plaintext';
+            return (window as any).hljs.highlight(code, { language }).value;
+          }
+        }))
       }
-      return mdToHTML(md, markedOptions);
+      return mdToHTML(md, markedOptions,...others);
     }
   }
 
@@ -470,14 +479,14 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
     }
     if (this._previewDOMPurify) {
       // rewirte SimpleMDE prototype method
-      SimpleMDE.prototype.markdown = (text: string) => {
+      EasyMDE.prototype.markdown = (text: string) => {
         return this._getDomHtml(this._getMdToHtml(text) || '');
       };
     }
-    SimpleMDE.prototype._fileInputEl = this._fileInputEl.current;
-    SimpleMDE.prototype._fileUploadFun = typeof this.props.imageUploadFun === 'function' ? this.props.imageUploadFun : defaultUploadFun;
+    EasyMDE.prototype._fileInputEl = this._fileInputEl.current;
+    EasyMDE.prototype._fileUploadFun = typeof this.props.imageUploadFun === 'function' ? this.props.imageUploadFun : defaultUploadFun;
     // SimpleMDE don't export codemirror method
-    SimpleMDE.prototype._replaceSelection = (cm: any, active: any, startEnd: any, url: any) => {
+    EasyMDE.prototype._replaceSelection = (cm: any, active: any, startEnd: any, url: any) => {
       if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className)) { return }
       let text;
       let start = startEnd[0];
@@ -507,7 +516,7 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
       cm.setSelection(startPoint, endPoint);
       cm.focus();
     };
-    this.$editor = new SimpleMDE({
+    this.$editor = new EasyMDE({
       element: this._editorEl.current,
       ...this._editorConfig
     });
@@ -549,6 +558,12 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
           }
       }
     });
+  }
+
+  componentWillUnmount() {
+    if (this.$editor) {
+      this.$editor.toTextArea();
+    }
   }
 
   render() {

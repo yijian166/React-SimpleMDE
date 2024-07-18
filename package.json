@@ -1,6 +1,6 @@
 {
   "name": "react-markdown-editor-smde",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "main": "dist/react-markdown-editor-smde.js",
   "module": "dist/react-markdown-editor-smde.esm.js",
   "author": "hicc <iwcc@outlook.com>",
@@ -21,13 +21,14 @@
     "fs": false
   },
   "dependencies": {
-    "dompurify": "^2.0.7",
-    "marked": "^4.0.10"
+    "dompurify": "^2.5.5",
+    "marked": "^4.3.0",
+    "marked-highlight": "^2.1.3"
   },
   "devDependencies": {
-    "@types/codemirror": "0.0.79",
-    "@types/dompurify": "0.0.33",
-    "@types/marked": "^0.6.5",
+    "@types/codemirror": "^0.0.79",
+    "@types/dompurify": "^2.4.0",
+    "@types/marked": "^4.0.8",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
     "react": "^16.13.1",
@@ -39,15 +40,14 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript2": "^0.24.3",
-    "simplemde": "^1.11.2",
     "ts-node": "^7.0.1",
     "tslib": "^1.10.0",
     "typescript": "^3.6.4"
   },
   "peerDependencies": {
+    "easymde": "^2.18.0",
     "react": ">=16.11.0",
-    "react-dom": ">=16.11.0",
-    "simplemde": "^1.11.2"
+    "react-dom": ">=16.11.0"
   },
   "scripts": {
     "build": "rollup -c",

@@ -1,6 +1,6 @@
 import './style.css';
 import * as Types from './types';
-import { Component } from 'react';
+import React, { Component } from 'react';
 export default class MarkdownEditor extends Component<Types.MarkdownEditorProps> {
     static ToolBarFunc: Types.ToolBarFuncs;
     static fullToolBar: {
@@ -35,22 +35,24 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
     private _editorEl;
     private _fileInputEl;
     $editor: null | Types.SimpleMarkdownEditor;
-    private readonly _inertTexts;
-    private readonly _editorConfig;
-    private readonly _hideToolbar;
-    private readonly _hideStatusBar;
+    private get _inertTexts();
+    private get _editorConfig();
+    private get _hideToolbar();
+    private get _hideStatusBar();
     private _getEditorH;
-    private readonly _editorH;
+    private get _editorH();
     private _defaultMinH;
-    private readonly _editorMinH;
+    private get _editorMinH();
     private _setHeightToEl;
     private _outputDOMPurify;
     private _previewDOMPurify;
     private _getMdToHtml;
     private _getDomHtml;
-    mdValue: string;
-    readonly _unDOMPurifyHtml: string;
-    readonly html: string;
+    get mdValue(): string;
+    set mdValue(content: string);
+    get _unDOMPurifyHtml(): string;
+    get html(): string;
     componentDidMount(): void;
-    render(): JSX.Element;
+    componentWillUnmount(): void;
+    render(): React.JSX.Element;
 }

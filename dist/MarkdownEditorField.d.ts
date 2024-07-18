@@ -1,3 +1,3 @@
-/// <reference types="react" />
+import React from 'react';
 import { MarkdownEditorFieldProps } from './types';
-export declare const MarkdownEditorField: (props: MarkdownEditorFieldProps) => JSX.Element;
+export declare const MarkdownEditorField: (props: MarkdownEditorFieldProps) => React.JSX.Element;
