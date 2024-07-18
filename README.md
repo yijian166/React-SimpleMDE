@@ -14,7 +14,7 @@ Simple Markdown Editor For React, base on [SimpleMDE](https://github.com/sparksu
 ## How To Use MarkdownEditor
 
 ```
-npm install simplemde --save
+npm install easymde --save
 npm install react-markdown-editor-smde --save
 
 ```
