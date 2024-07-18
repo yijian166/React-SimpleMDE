@@ -33,7 +33,7 @@ export default [
 			commonjs({
 				include: /node_modules/,
 				namedExports: {
-					marked:['marked'],
+					'marked/lib/marked.umd.js':['marked'],
 					'marked-highlight/lib/index.umd.js':['markedHighlight']
 				}
 			}),  // so Rollup can convert `ms` to an ES module

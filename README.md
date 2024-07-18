@@ -20,7 +20,7 @@ npm install react-markdown-editor-smde --save
 ```
 
 ```javascript
-import 'simplemde/src/css/simplemde.css';
+import 'easymde/src/css/easymde.css';
 import 'codemirror/lib/codemirror.css'
 import MarkdownEditor from 'react-markdown-editor-smde'
 const Editor = () => {

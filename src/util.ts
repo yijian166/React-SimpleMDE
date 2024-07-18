@@ -1,4 +1,4 @@
-import { marked } from 'marked/index';
+import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
 export const mdToHTML = (md: string, markedOptions:marked.MarkedExtension = {},...others:marked.MarkedExtension[]):string => {
