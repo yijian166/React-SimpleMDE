@@ -4979,7 +4979,7 @@ var MarkdownEditor = /** @class */ (function (_super) {
         var _height = height;
         _height -= this._hideStatusBar ? 0 : 35;
         _height -= this._hideToolbar ? 0 : 51;
-        _height -= 22; // padding + border
+        _height -= 2; // padding 
         return Math.max(_height, 160);
     };
     Object.defineProperty(MarkdownEditor.prototype, "_editorH", {
