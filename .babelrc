@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": "last 2 versions, ie >= 11" // 根据你的目标浏览器环境调整
+      },
+      "modules": false // Rollup 负责模块打包，Babel 不处理模块转换为 CommonJS
+    }]
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties" // 显式包含类字段插件
+  ]
+}

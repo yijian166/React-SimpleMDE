@@ -1,14 +1,14 @@
-import { marked } from 'marked';
+import { marked, MarkedExtension } from 'marked';
 import DOMPurify from 'dompurify';
 
-export const mdToHTML = (md: string, markedOptions:marked.MarkedExtension = {},...others:marked.MarkedExtension[]):string => {
+export const mdToHTML = (md: string, markedOptions: MarkedExtension = {}, ...others: MarkedExtension[]): string => {
   try {
     const _md = typeof md === 'string' ? md : '';
     if (typeof markedOptions === 'object' && Object.keys(markedOptions).length > 0) {
       // Set options
       marked.use(markedOptions,...others);
     }
-    return marked.parse(_md);
+    return marked.parse(_md) as string;
   } catch (error) {
     return '';
   }

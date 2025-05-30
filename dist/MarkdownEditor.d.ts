@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 export default class MarkdownEditor extends Component<Types.MarkdownEditorProps> {
     static ToolBarFunc: Types.ToolBarFuncs;
     static fullToolBar: {
-        undo: Types.MarkdownEditorToolBarItem;
-        redo: Types.MarkdownEditorToolBarItem;
         bold: Types.MarkdownEditorToolBarItem;
         italic: Types.MarkdownEditorToolBarItem;
         strikethrough: Types.MarkdownEditorToolBarItem;
@@ -28,6 +26,8 @@ export default class MarkdownEditor extends Component<Types.MarkdownEditorProps>
         preview: Types.MarkdownEditorToolBarItem;
         "side-by-side": Types.MarkdownEditorToolBarItem;
         fullscreen: Types.MarkdownEditorToolBarItem;
+        undo: Types.MarkdownEditorToolBarItem;
+        redo: Types.MarkdownEditorToolBarItem;
         guide: Types.MarkdownEditorToolBarItem;
     };
     static defaultToolBar: Types.MarkdownEditorToolBarConfig;
